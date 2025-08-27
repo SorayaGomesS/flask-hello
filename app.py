@@ -1,23 +1,25 @@
-from flask import Flask
+from flask import Flask, render_template_string
+from datetime import datetime
 
 app = Flask(__name__)
 
+# Rota principal
 @app.route("/")
-def home():
-    # Página inicial simples, em inglês
-    return "Hello, World!"
+def index():
+    now = datetime.now()
+    return render_template_string("""
+        <h1>Hello World!</h1>
+        <p>The local date and time is {{ now.strftime("%B %d, %Y %I:%M %p") }}.</p>
+        <p>That was a few seconds ago.</p>
+    """, now=now)
 
+# Rota de usuário
 @app.route("/user/<name>")
-def greet(name):
-    # NÃO alteramos a capitalização: mostra exatamente o que vier na URL
-    # Ex.: /user/Soraya%20Gomes -> "Hello, Soraya Gomes!"
-    return f"Hello, {name}!"
+def user(name):
+    return render_template_string("<h1>Hello, Soraya Gomes!</h1>", name=name)
 
-# Importante: NÃO crie rota para /rotainexistente.
-# Assim, acessar /rotainexistente resultará numa página 404 Not Found,
-# exatamente como no exemplo das fotos.
+# Página de erro 404
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template_string("<h1>Not Found</h1>"), 404
 
-# O bloco abaixo é ignorado no PythonAnywhere (a app roda via WSGI),
-# mas não atrapalha estar aqui.
-if __name__ == "__main__":
-    app.run()
