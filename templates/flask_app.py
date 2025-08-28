@@ -1,12 +1,14 @@
-#Exercicio 3
+# Exercicio 3 - ajustado para Bootstrap-Flask
 
 from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from flask_bootstrap import Bootstrap5   # <<< alteração aqui
 from datetime import datetime
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
+
+# Inicializando extensões
+bootstrap = Bootstrap5(app)  # <<< alteração aqui
 moment = Moment(app)
 
 # Rota - Página Inicial
