@@ -11,7 +11,7 @@ def home():
     <h1>Avaliação contínua: Aula 030</h1>
     <ul>
         <li><a href="{url_for('home')}">Home</a></li>
-        <li><a href="{url_for('identificacao', nome='William Kermer', prontuario='PT3032191', instituicao='IFSP')}">Identificação</a></li>
+        <li><a href="{url_for('identificacao', nome='Soraya Gomes', prontuario='PT3032515', instituicao='IFSP')}">Identificação</a></li>
         <li><a href="{url_for('contexto_requisicao')}">Contexto da requisição</a></li>
     </ul>
     """
