@@ -1,9 +1,5 @@
 {% extends "base.html" %}
-
 {% block page_content %}
-<div class="page-header">
-    <h1>Hello World!</h1>
-</div>
-<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
-<p>That was {{ moment(current_time).fromNow(refresh=True) }}.</p>
+  <h1 class="text-primary">Bem-vindo ao meu Flask App!</h1>
+  <p>Data e hora atual: {{ moment(current_time).format('LLLL') }}</p>
 {% endblock %}
